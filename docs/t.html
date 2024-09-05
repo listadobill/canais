@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TESTE</title>
+
+  <!-- Inclua o CSS do Video.js -->
+  <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+
+  <!-- Inclua o Video.js -->
+  <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+</head>
+<body>
+
+  <!-- O elemento de vídeo -->
+  <video id="player" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360" data-setup="{}">
+    <source src="https://abc.embedmax.site/globonews/video.m3u8" type="application/x-mpegURL">
+  </video>
+
+  <script>
+    // Inicializa o player
+    var player = videojs('player');
+    
+    // Adicionar qualquer configuração ou plugin extra aqui
+    player.play();  // Começa a reprodução automaticamente
+  </script>
+
+</body>
+</html>
