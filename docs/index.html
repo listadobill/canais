@@ -5,19 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vídeo em Tela Cheia</title>
     <style>
+        /* Ajusta o body e o html para ocupar toda a tela */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Remove a barra de rolagem */
+        }
+
+        /* O container do vídeo ocupa 100% da largura e altura da janela */
         .video-container {
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 100%;
         }
         
+        /* O iframe se ajusta à tela inteira */
         .video-container iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
         }
     </style>
 </head>
@@ -26,7 +38,6 @@
     <div class="video-container">
         <iframe id="youtube-video" src="https://www.youtube.com/embed/w4mrJxXKv0g?si=RHpWTTCSWzogigAW" 
         title="YouTube video player" 
-        frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         allowfullscreen>
         </iframe>
@@ -42,12 +53,12 @@
                 iframe.mozRequestFullScreen();
             } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari e Opera
                 iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { // Internet Explorer/Edge
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
                 iframe.msRequestFullscreen();
             }
         }
 
-        // Espera o iframe carregar para tentar abrir em tela cheia
+        // Quando o iframe for carregado, tenta ativar o modo tela cheia
         window.onload = function() {
             const iframe = document.getElementById("youtube-video");
             iframe.addEventListener("load", openFullscreen);
