@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1</title>
+    <title>2</title>
     <style>
         /* Ajusta o body e o html para ocupar toda a tela */
         html, body {
@@ -36,7 +36,8 @@
 <body>
 
     <div class="video-container">
-        <iframe id="globo" src="https://embedmax.site/tvl/globonews.php" 
+        <!-- Adicione 'autoplay=1&mute=1' na URL para tentar reprodução automática -->
+        <iframe id="globo" src="https://embedmax.site/tvl/globonews.php?autoplay=1&mute=1" 
         title="GLOBO NEWS" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         allowfullscreen>
@@ -44,44 +45,24 @@
     </div>
 
     <script>
-        // Função para entrar em tela cheia
-        function openFullscreen() {
+        // Tenta garantir que o iframe reproduza automaticamente
+        document.addEventListener("DOMContentLoaded", function() {
             const iframe = document.getElementById("globo");
-            if (iframe.requestFullscreen) {
-                iframe.requestFullscreen();
-            } else if (iframe.mozRequestFullScreen) { // Firefox
-                iframe.mozRequestFullScreen();
-            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari e Opera
-                iframe.webkitRequestFullscreen();
-            } else if (iframe.msRequestFullscreen) { // IE/Edge
-                iframe.msRequestFullscreen();
-            }
-        }
+            
+            // Verifica se o iframe já está pronto
+            iframe.addEventListener('load', function() {
+                // Força o autoplay ao carregar o iframe
+                const iframeWindow = iframe.contentWindow;
+                iframeWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+            });
+        });
 
-        // Quando o iframe for carregado, tenta ativar o modo tela cheia
-        window.onload = function() {
-            const iframe = document.getElementById("globo");
-            iframe.addEventListener("load", openFullscreen);
-        };
-
-        // Tentar bloquear pop-ups com o evento blur
+        // Função para tentar forçar o foco de volta para a janela original caso um pop-up seja aberto
         window.onblur = function() {
             setTimeout(function() {
                 window.focus();
             }, 0);
         };
-
-        // Impede que o iframe abra novas páginas ou janelas
-        document.getElementById("globo").addEventListener('load', function() {
-            const iframeWindow = document.getElementById('globo').contentWindow;
-
-            // Impede que links dentro do iframe abram novas janelas
-            iframeWindow.document.addEventListener('click', function(event) {
-                if (event.target.tagName === 'A') {
-                    event.preventDefault(); // Impede a navegação
-                }
-            });
-        });
     </script>
 
 </body>
