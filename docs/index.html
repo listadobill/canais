@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV DO BILL</title>
+    <style>
+        body {
+            background: url('https://static.wixstatic.com/media/f21f2b_1237fdb938104273808d6029aa9d3b6c~mv2.jpeg/v1/fill/w_973,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f21f2b_1237fdb938104273808d6029aa9d3b6c~mv2.jpeg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .top-text {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5); /* Adiciona um fundo escuro para o texto */
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+        }
+        .button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #444;
+            border-radius: 12px;
+            padding: 15px;
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .button:hover {
+            transform: scale(1.05);
+            background-color: #4CAF50; /* Cor verde para o fundo dos botões ao passar o mouse */
+        }
+        .icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        .text {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        @media screen and (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-text">
+        Lista de canais para o KODI ou Apps de IPTV - Atualização, 03 de Setembro de 2024: <a href="https://bit.ly/tvdobill" target="_blank" style="color: #4CAF50;">https://bit.ly/tvdobill-iptv</a>
+    </div>
+    <div class="container">
+       
+      <a href="https://listadobill.github.io/canais/scc_sbt_sc" class="button">
+            <img src="https://yt3.ggpht.com/-i8DFwJKvGuU/AAAAAAAAAAI/AAAAAAAAAAA/z4rOBDiiSUc/s900-c-k-no/photo.jpg" alt="APP SS-IPTV" class="icon">
+            <span class="text">SCC -SBT SC</span>
+        </a>
+
+    </div>
+</body>
+</html>
