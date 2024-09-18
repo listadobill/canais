@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCC - SBT SC</title>
+    <style>
+        /* Ajusta o body e o html para ocupar toda a tela */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Remove a barra de rolagem */
+        }
+
+        /* O container do vídeo ocupa 100% da largura e altura da janela */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* O iframe se ajusta à tela inteira */
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <iframe id="youtube-video" src="https://www.youtube.com/live/zQ_uTb0sSUo?si=WRkaqwINl7_wbfqJ" 
+        title="TV ALESC SC" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+        </iframe>
+    </div>
+
+    <script>
+        // Função para entrar em tela cheia
+        function openFullscreen() {
+            const iframe = document.getElementById("youtube-video");
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) { // Firefox
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { // IE/Edge
+                iframe.msRequestFullscreen();
+            }
+        }
+
+        // Quando o iframe for carregado, tenta ativar o modo tela cheia
+        window.onload = function() {
+            const iframe = document.getElementById("youtube-video");
+            iframe.addEventListener("load", openFullscreen);
+        };
+    </script>
+
+</body>
+</html>
